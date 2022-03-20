@@ -1,4 +1,3 @@
-import jdk.jfr.Name;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestName;
