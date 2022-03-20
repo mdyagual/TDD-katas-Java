@@ -1,13 +1,19 @@
+import jdk.jfr.Name;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TestName;
+
 import static org.junit.Assert.*;
 import static org.hamcrest.Matchers.*;
 
 public class StringCalculatorTest {
     public StringCalculator stringCalculatorInstance = new StringCalculator();
     //An empty string returns zero
+    @Rule public TestName name = new TestName();
     @Test
     public void emptyStringTest() throws Exception {
-        assertThat(stringCalculatorInstance.add(""), is(0));
+        System.out.println(name.getMethodName());
+        assertThat( stringCalculatorInstance.add(""), is(0));
     }
     // A single number returns the value
     @Test
