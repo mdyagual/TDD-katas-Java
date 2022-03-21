@@ -34,6 +34,6 @@ La esencia de este taller consiste en un método que dada una cadena delimitada,
 
 * Se actualizó la versión de Gradle a la 5.0 para que sea compatible con Java 11
 * Se actualizó la librería de Junit a la 5.6.2 para descartar la versión 4.12 donde no se podían usar etiquetas vistas en la versión 5.6.2
-* Se agregó código nuevo para el funcionamiento de los últimos dos casos dentro de la misma función add
+* Se agregó código nuevo para el funcionamiento de los últimos dos casos dentro de la misma función add() que posee la clase StringCalculator
 
 Completado con mucho entusiasmo por mdyagual para Sofka U(◕‿◕✿)
