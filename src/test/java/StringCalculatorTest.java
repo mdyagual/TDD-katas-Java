@@ -70,4 +70,14 @@ public class StringCalculatorTest {
     public void singleCharDelimiterTest() throws Exception {
         assertThat(stringCalculatorInstance.add("#2#1000"), is(1002));
     }
+
+    //TO DO: delimitador de varios caracteres en la primera línea (p. Ej., // [###] para "###" como delimitador)
+    @Test
+    @DisplayName("variousCharDelimiterTest()")
+    public void variousCharDelimiterTest() throws Exception {
+        assertThat(stringCalculatorInstance.add("[###]2###1000"), is(1002));
+    }
+
+    //TO DO: definir muchos delimitadores de uno o varios caracteres (cada uno entre corchetes)
+
 }
