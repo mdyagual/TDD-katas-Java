@@ -1,5 +1,7 @@
 //import org.omg.CORBA.SystemException;
 
+
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -8,6 +10,7 @@ public class StringCalculator {
         if(values.length() > 0) {
             int temp;
             String delimiter = null;
+            ArrayList<String> delimeters = new ArrayList<>();
             try {
                 temp = Integer.parseInt("" + values.charAt(0));
             } catch(Exception e) {
@@ -17,7 +20,16 @@ public class StringCalculator {
                 }else if (("" + values.charAt(0)).equals("[")){
                     values = values.replace("[","").replace("]","/");
                     ArrayList<String> lista = new ArrayList<>(Arrays.asList(values.split("/")));
-                    delimiter = lista.get(0);
+                    if(lista.size() > 2){
+                        for(String elem: lista){
+                            if(!(isNumeric(""+elem.charAt(0)))){
+                                delimeters.add(elem);
+                            }
+                        }
+                    }else{
+                        delimiter = lista.get(0);
+                    }
+
                 }
                 else {
                     delimiter = "" + values.charAt(0);
@@ -25,6 +37,7 @@ public class StringCalculator {
             }
 
             String[] splittedList = null;
+            //ArrayList<String> splittedVarious = new ArrayList<>();
             if(delimiter != null) {
                 if(delimiter.length()>1){
                     splittedList = values.substring(delimiter.length()+1).split(delimiter);
@@ -32,6 +45,12 @@ public class StringCalculator {
                     splittedList = values.substring(1, values.length()).split(delimiter);
                 }
 
+            } else if (delimeters.size()!=0) {
+                String valor = Arrays.asList(values.split("/")).get(delimeters.size());
+                for (String lim: delimeters){
+                    valor = valor.replace(lim,"/");
+                }
+                splittedList = valor.split("/");
             } else {
                 splittedList = values.split("[,|\n]");
             }
@@ -59,5 +78,24 @@ public class StringCalculator {
             return accumulator;
         }
         return 0;
+    }
+
+    public static boolean isNumeric(String string) {
+        int intValue;
+
+        System.out.println(String.format("Parsing string: \"%s\"", string));
+
+        if(string == null || string.equals("")) {
+            System.out.println("String cannot be parsed, it is null or empty.");
+            return false;
+        }
+
+        try {
+            intValue = Integer.parseInt(string);
+            return true;
+        } catch (NumberFormatException e) {
+            System.out.println("Input String cannot be parsed to Integer.");
+        }
+        return false;
     }
 }

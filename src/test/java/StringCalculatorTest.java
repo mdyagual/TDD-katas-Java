@@ -79,5 +79,9 @@ public class StringCalculatorTest {
     }
 
     //TO DO: definir muchos delimitadores de uno o varios caracteres (cada uno entre corchetes)
-
+    @Test
+    @DisplayName("multiVariousCharDelimiterTest()")
+    public void multiVariousCharDelimiterTest() throws Exception {
+        assertThat(stringCalculatorInstance.add("[###][,,]2###100,,20"), is(122));
+    }
 }
